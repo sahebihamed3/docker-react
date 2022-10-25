@@ -2,13 +2,13 @@ version: '3'
 services:
   web:
     build:
-      context: .
+      context: frontend
       dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
     volumes:
       - /app/node_modules
-      - ./:/app
+      - ./frontend:/app
 
   #It does not work (Better to run test on the same 
   #container as development in a seperate cmd window)
@@ -18,7 +18,7 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - /app/node_modules
-      - ./:/app
+      - ./frontend:/app
     command: ["npm","run","test"]
 
   production:
